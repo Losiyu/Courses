@@ -1,0 +1,15 @@
+@font-face {
+   font-family: 'PTSerif-Bold';
+   font-display: swap;
+   src: url('PTSerif-Bold/font.ttf');
+}
+@font-face {
+   font-family: 'Roboto-Bold';
+   font-display: swap;
+   src: url('Roboto-Bold/font.ttf');
+}
+@font-face {
+   font-family: 'Roboto-Regular';
+   font-display: swap;
+   src: url('Roboto-Regular/font.ttf');
+}

@@ -1,0 +1,377 @@
+\documentclass{article}
+\usepackage{fullpage}
+\usepackage[top=1in, bottom=1in, left=.5in, right=.75in]{geometry}
+\usepackage{amsmath,amssymb,graphicx,amsthm, color} 
+
+\newcommand{\mypagebreak}{\begin{center}
+		\noindent\makebox[\linewidth]{\rule{7.5in}{1pt}}
+	\end{center}}
+
+\newcommand{\bmat}{\left[\begin{matrix}}
+\newcommand{\emat}{\end{matrix}\right]}
+
+\newcommand{\R}{\mathbb R}
+\newcommand{\bE}{\mathbb E}
+\newcommand{\pr}{\mathbf{Pr}}
+\newcommand{\sign}{\mathbf{sign}}
+\newcommand{\var}{\mathbf{var}}
+\newcommand{\tr}{\mathbf{tr}}
+
+
+\newcommand{\idx}[1]{{\scriptsize [#1]}}
+
+\newcommand{\showpoints}[1]{\textbf{(#1)}}
+
+\begin{document}
+{\Large\textbf{CSE 512: Homework 1 \hfill
+Due Wednesday September 8}}
+
+
+\mypagebreak
+
+\begin{enumerate}
+
+
+\item \showpoints{1 pts, 0.25 pts each}  \emph{Linearity.} Are the following functions linear? Justify your answer.
+
+\begin{enumerate}
+\item $f(x) = \|x\|_2^2$
+\item $f(x) = \|x\|_1$
+\item $f(x) = \frac{1}{2}x^TQx + p^Tx + r$
+\item $f(x) = c^Tx + b^TAx$
+\end{enumerate}
+
+
+
+
+
+\item \showpoints{1 pt, 0.25 each} Using the properties of norms, verify that the following are norms, or prove that they are not norms
+
+
+
+
+
+
+
+
+
+\begin{enumerate}
+\item \emph{Direct sum.} $f:\mathbb R^d\to \mathbb R$, $f(x) = \sum_k x[k]$
+
+
+\item \emph{Sum of square roots, squared.} $f:\mathbb R^d\to \mathbb R$, $f(x) = \left(\sum_{k=1}^d \sqrt{|x[k]|}\right)^2$
+
+
+
+\item \emph{(Shifted) entropy function} $f:\mathbb R^d\to\R$, $f(x) = -\sum_{i=1}^d (x\idx{i}+\tfrac{1}{2}) \log_2(x\idx{i}+\tfrac{1}{2})$ where $-1/2 \leq x\idx{i}\leq 1/2$ for all $i = 1,...,d$
+
+
+\item \emph{Weighted 2-norm.}  $f:\mathbb R^d\to \mathbb R$, $f(x) = \sqrt{\sum_{k=1}^d \frac{|x[k]|^2}{k}}$
+
+
+
+\end{enumerate}
+
+
+\item \showpoints{1 pt, 0.25 each} \emph{Independent or not independent}
+Variables $A$ and $B$ are random variables for two distributions. Decide if $A$ and $B$ are independent. Justify your answer.
+\begin{enumerate}
+\item $A$ and $B$ are discrete random variables and have the following p.m.f.s
+\[
+p_A(a) = \begin{cases}
+0.25, & a = \text{red}\\
+0.25, & a = \text{blue}\\
+0.5, & a = \text{green}\\
+\end{cases},
+\qquad
+p_B(b) = \begin{cases}
+0.3, & b = \text{hat}\\
+0.3, & b = \text{T-shirt}\\
+0.2, & b = \text{skirt}\\
+0.2, & b = \text{shoes}\\
+\end{cases}
+\]
+and $p_{A,B}(a,b)$ are defined by the table below
+\begin{center}
+\begin{tabular}{l|ccc}
+ & a = red & a = blue & a = green\\\hline
+b = hat& 0.075 & 0.075 & 0.15\\
+b = T-shirt& 0.075 & 0.075 & 0.15\\
+b = skirt&0.05 & 0.05 & 0.1\\
+b = shoes&0.05 & 0.05 & 0.1\\
+\end{tabular} 
+\end{center}
+
+
+
+\item $A$ and $B$ are uniform distributions, where 
+\[
+f_A(a) = \begin{cases} 1 & -1 \leq a \leq 0 \\ 0 & \text{else,}
+\end{cases}
+\qquad
+f_B(b) = \begin{cases} 1 & 0 \leq b \leq 1 \\ 0 & \text{else,}
+\end{cases},\]
+\[
+f_{A,B}(a,b) = \begin{cases} 4/3 &  |a+b| \leq 1/2 , \;-1 \leq a \leq 0, \; 0 \leq b \leq 1\\ 0 & \text{else,}
+\end{cases}
+\]
+
+
+\item $A$ follows the p.m.f.
+\[
+p_A(a) = \begin{cases}
+0.5, & a = 1\\
+0.5, & a = -1\\
+\end{cases}
+\]
+and $B = A\cdot C$ where
+\[
+p_C(c) = \begin{cases}
+0.9, & c = 1\\
+0.1, & c = -1\\
+\end{cases}
+\]
+
+
+\item $A$ and $B$ are Gaussian distributions, with  the following properties: 
+\[
+\bE[A] = 0,\quad \bE[B] = 1, \quad\bE[A^2] = 1, \quad\bE[(B-1)^2] = 1/2, \quad\bE[A(B-1)] = -1.
+\]
+Writing in terms of the usual Gaussian distribution form, if we form a random vector as $X = \bmat A \\ B\emat$, then
+\[
+\mu = \bmat \bE[A]\\\bE[B]\emat, \qquad
+\Sigma = \bmat \bE[(A-\bE[A])^2] & \bE[(A-\bE[A])(B-\bE[B])] \\\bE[(A-\bE[A])(B-\bE[B])] & \bE[(B-\bE[B])^2] \emat 
+\]
+
+\end{enumerate}
+
+
+
+
+\item \showpoints{2 pts} \emph{Probability and statistics.}
+ I have 4 children, Alexa, Siri, Googs, and Zuckie. 
+Every morning I tell them to put on their socks.
+
+
+
+\begin{itemize}
+
+\item Alexa only listens to me on Mondays and Thursdays and puts on her socks. The rest of the days, she puts on her socks only half of the time. She either puts on both her socks or none of her socks. 
+
+
+\item 
+Siri always runs and gets her socks, but only puts one sock on. 
+
+\item 
+Googs tells me all this random trivia about socks, but never puts on his socks.
+\item 
+Zuckie wears both his socks 4/7 of the time and sells the rest of them to  CambridgeAnalytica.
+\end{itemize}
+
+Assume the children all act independently.  Round all answers to at least 3 significant digits.
+
+\begin{enumerate}
+
+
+\item \showpoints{0.5 pts}
+What are the chances that either Alexa or Zuckie is wearing a sock?
+
+
+\item \showpoints{0.5 pts}
+On a random day, a girl is wearing a sock. What are the chances that it's Alexa?
+
+
+\item \showpoints{0.5 pts}
+What is the expected number of socks being worn by each child?
+
+
+\item \showpoints{0.5 pts} What is the variance in the number of socks being work by each child?
+
+
+
+
+
+\end{enumerate}
+
+
+
+
+\item \showpoints{2 pts, 0.5 points each} \emph{Conditional independence vs independence.} 
+Tom is a blue-gray cat with a bushy tail, and Jerry is a brown mouse with a rope-like tail. After many years of fighting, they both decided to settle down, and now have thriving families. Tom has 10 kids and Jerry has 40 kids. Tom's kids are all  cats like him, with bushy tails. Half of Tom's kids are blue, while the other half is gray. Jerry's kids are all brown mice, with rope-like tails.
+
+\begin{enumerate}
+\item 
+I pick up a baby animal at random.  What is the probability that ... (fill in the table)
+\begin{center}
+\begin{tabular}{|l|ll|}
+\hline
+fur $\backslash$ tail & furry & rope-like\\\hline
+&&\\blue&&\\&&\\
+&&\\gray&&\\&&\\
+&&\\brown&&\\&&\\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+
+\item Are the features ``fur color" and ``tail texture" independent or dependent, without knowing the type of animal? (Show mathematically.)
+
+
+\item Now Tom comes over and says, ``I'm very proud of my baby girl, of whom you are holding."
+ What is the probability that  (fill in the table)
+\begin{center}
+\begin{tabular}{|l|ll|}
+\hline
+fur $\backslash$ tail & furry & rope-like\\\hline
+&&\\blue&&\\&&\\
+&&\\gray&&\\&&\\
+&&\\brown&&\\&&\\
+\hline
+\end{tabular}
+\end{center}
+
+
+
+\item Are the features ``fur color" and ``tail texture" independent or dependent, now that I know the animal is Tom's cherished baby daughter? (Show mathematically.)
+
+
+\end{enumerate}
+
+
+
+
+\item \showpoints{3 pts} \textbf{Exponential distribution.} Wait time is often modeled as an exponential distribution, e.g. 
+\[
+\pr(\text{I  wait less than $x$ hours at the DMV}) = 
+\begin{cases}
+1-e^{-\lambda x}, & x > 0\\
+0, & x \leq 0,
+\end{cases}
+\]
+and this cumulative density function is parametrized by some constant $\lambda > 0$. A random variable $X$ distributed according to this CDF is denoted as $X\sim \exp[\lambda]$.
+
+\begin{enumerate}
+\item \showpoints{0.25 pts} In terms of $\lambda$, give the probability distribution function for the exponential distribution.
+
+
+
+\item \showpoints{0.25 pts} Show that if $X\sim \exp(\lambda)$, then the mean of $X$ is $1/\lambda$ and the variance is $1/\lambda^2$.
+
+(You may use a symbolic integration tool such as Wolfram Alpha. If you do wish to do the integral by hand, my hint is to review integration by parts.)
+
+
+
+\item \showpoints{0.5 pts} Now suppose I run a huge server farm, and I am monitoring the server's ability to respond to web requests. I have $m$ observations of delay times, $x_1,...,x_m$, which I assume are i.i.d., distributed according to $\exp[\lambda]$ for some $\lambda$. 
+ Given these $m$ observations,  what is the maximum likelihood estimate $\hat \lambda$ of $\lambda$?
+
+
+
+
+
+
+\item \showpoints{1 pt} Given the estimate of $\hat \lambda$ in your previous question, is $1/\hat \lambda$ an unbiased estimate of the mean wait time? Is $1/\hat \lambda^2$ an unbiased estimate of the variance in wait time?
+
+
+
+\item \showpoints{1 pt} Now let's consider $x_1,...,x_m$ drawn i.i.d. from a \emph{truncated} exponential distribution, e.g. 
+\[
+p_{\lambda, c}(x) = 
+\begin{cases}
+0 & \text{ if } x > c \text{ or } x < 0\\
+\displaystyle\frac{\lambda\exp(-\lambda x)}{1-\exp(-\lambda c)} & \text{ else.}
+\end{cases}
+\]
+
+Using Hoefdding's inequality, give a range of values that account for the uncertainty in your guess. That is, as a function of $x_i$, $m$ and $\delta$, give a range of values $[\hat \lambda_{\min}, \hat \lambda_{\max}]$
+such that 
+\[
+\pr(\hat \lambda_{\min}\leq \bE[X] \leq \hat \lambda_{\max}) \geq 1-\delta.
+\]
+
+
+\end{enumerate}
+
+
+
+
+
+
+\end{enumerate}
+
+
+
+\newpage
+\section*{Challenge!} 
+\textbf{Generalizing the Cauchy Schwartz inequality}
+
+We saw in lecture the Cauchy Schwartz inequality, which says that for any two vectors $x\in \R^n$, $y\in \R^n$, 
+\[
+x^Ty \leq \|x\|_2\|y\|_2, \quad x^Ty = \|x\|_2\|y\|_2 \iff x=cy
+\]
+for some positive scalar $c$. 
+
+\begin{enumerate}
+\item Holder's inequality generalizes this to \emph{dual norms}. That is, for any $p$ and $q$ where $\frac{1}{p} + \frac{1}{q} = 1$, we have 
+\[
+x^Ty \leq \|x\|_p\|y\|_q
+\]
+where equality is reachable for a specific choice of $x$ and $y$.
+
+\begin{enumerate}
+\item When $p = 1$, the corresponding $q$ is $q = +\infty$, and $\|x\|_\infty$ is the max-norm, e.g. $\|x\|_\infty = \max_i |x_i|$. Prove Holder's inequality for this choice of $p$ and $q$.
+That is, prove that for any $x$ and any $y$, 
+\[
+x^Ty \leq \|x\|_1\|y\|_\infty.
+\]
+
+\item For $p = 1$, $q = +\infty$, given $x$, list the entire set of possible $y$ where $x^Ty = \|x\|_1\|y\|_\infty$. Hint: The rule for $x = [0,0,...,0]^T$ is different than for $x$ if all the values are nonzero.
+
+
+\end{enumerate}
+\item We can further generalize Holder's inequality to include \emph{conic constraints}. For example, suppose $x$ is restricted to the nonnegative orthant, e.g. $x_i \geq 0$ for all $i$. 
+Then 
+\[
+x^Ty \leq \left(\sum_i x_i\right) \max_i y_i.\qquad (*)
+\]
+
+\begin{enumerate}
+\item Prove $(*)$.
+
+
+\item List the set of $y$ such that, given $x$, $(*)$ is true with equality.
+
+
+\end{enumerate}
+
+
+\item The \emph{singular value decomposition} of a matrix $X\in \R^{m\times n}$ decomposes $X$ to its \emph{singular values and vectors}. It is usually written as 
+\[
+X = \sum_{i=1}^r s_iu_iv_i^T
+\]
+where $u_i\in \R^m$ are the \emph{left singular values}, $v_i\in \R^n$ are the \emph{right singular values}, and $s_i$ are positive scalars. Here, $r$ is the \emph{rank} of $X$. Each singular vector are \emph{orthonormal}, e.g.
+\[
+u_i^Tu_j = \begin{cases} 1 & \text{ if }i = j\\ 0 & \text{ else,} \end{cases} \qquad
+v_i^Tv_j = \begin{cases} 1 & \text{ if }i = j\\ 0 & \text{ else.} \end{cases}
+\]
+
+
+
+The \emph{trace norm} of $X$ is the sum of its singular values (denoted $\|X\|_*$). The \emph{spectral norm} of $X$ is its largest singular value (denoted $\|X\|_2$). 
+
+\begin{enumerate}
+
+\item Prove the following generalization of the Cauchy Schwartz inequality for matrices $X\in \R^{m\times n}$ and $Y \in \R^{m\times n}$
+\[
+\tr(X^TY) \leq \|X\|_*\|Y\|_2.
+\]
+
+
+
+\item Given $X$, describe the set of $Y$ such that $\tr(X^TY) = \|X\|_*\|Y\|_2$.
+
+\end{enumerate}
+\end{enumerate}
+
+\end{document}
