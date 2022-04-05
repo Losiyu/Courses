@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v6.js"></script>
+  </head>
+  <body>
+    <svg id="svg" height="800" width="800"> 
+    </svg>
+  </body>
+</html>
+
+<script>
+  // https://observablehq.com/@d3/selection-join
+  // https://www.d3indepth.com/datajoins/
+  var data = [
+    {index: 1, x:100, y:100, c:'red'},
+    {index: 2, x:200, y:200, c:'green'},
+    {index: 3, x:300, y:300, c:'blue'},
+  ]
+  var svg = d3.select('#svg')
+  
+  var temp = svg
+    .selectAll('circle')
+    .data(data, function(d){return d.index})
+    .join('circle')
+      .attr('cx', function(d){return d.x})
+      .attr('cy', function(d){return d.y})
+      .attr('r', 15)
+      .attr('fill', function(d){return d.c})
+
+  // var data1 = [
+  //   {index: 1, x:100, y:100, c:'red'},
+  //   {index: 3, x:300, y:300, c:'blue'},
+  // ]
+
+  // var temp = svg
+  //   .selectAll('circle')
+  //   .data(data1, function(d){return d.index})
+  
+  // console.log(temp)
+  
+  // temp.join('circle')
+  //   .attr('cx', function(d){return d.x})
+  //   .attr('cy', function(d){return d.y})
+  //   .attr('r', 15)
+  //   .attr('fill', function(d){return d.c})
+</script>

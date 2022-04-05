@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v6.js"></script>
+  </head>
+  <body>
+    <svg id="svg" height="600" width="600">
+    </svg>
+  </body>
+</html>
+
+<script>
+  var data = [
+    {x:100, y:100, c:'red'},
+    {x:200, y:200, c:'green'},
+    {x:300, y:400, c:'blue'},
+  ]
+  var svg = d3.select('#svg')
+  
+  svg
+    .selectAll('circle')
+    .data(data)
+    .join('circle')
+      .transition()
+      .attr('cx', d=>d.x)
+      .attr('cy', d=>d.y)
+      .attr('r', 15)
+      .attr('fill', d=>d.c)
+
+  width = 600
+  xScale = d3.scaleLinear()
+            .domain([0, 2])
+            .range([0, width])
+  xAxis = d3.axisBottom(xScale)
+
+  svg.append('g')
+    .attr('transform', "translate(0, 600)")
+    .call(xAxis)
+</script>

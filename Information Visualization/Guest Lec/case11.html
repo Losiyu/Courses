@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <script src="https://cdn.plot.ly/plotly-2.9.0.min.js"></script>
+  </head>
+  <body>
+    <h3>resource:</h3>
+    <p>https://d3js.org/</p>
+    <p>https://d3-graph-gallery.com/</p>
+    <h3>Package built on the top of d3.js</h3>
+    <p>Ploty.js</p>
+    <h3>If you have to ploty millions of component</h3>
+    <p>Do not choose d3.js</p>
+  </body>
+
+  <h1>d3.js is not a charting library, </h1>
+  <h1>it is a library for manipulating documents</h1>
+  <div id="myDiv"></div>
+</html>
+
+<script>
+  var trace1 = {
+  x: [1, 2, 3, 4],
+  y: [10, 15, 13, 17],
+  mode: 'markers',
+  type: 'scatter'
+};
+
+var trace2 = {
+  x: [2, 3, 4, 5],
+  y: [16, 5, 11, 9],
+  mode: 'lines',
+  type: 'scatter'
+};
+
+var trace3 = {
+  x: [1, 2, 3, 4],
+  y: [12, 9, 15, 12],
+  mode: 'lines+markers',
+  type: 'scatter'
+};
+
+var data = [trace1, trace2, trace3];
+
+Plotly.newPlot('myDiv', data);
+</script>

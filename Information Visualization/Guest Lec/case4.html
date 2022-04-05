@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v6.js"></script>
+  </head>
+  <body>
+    <svg id="svg" height="600" width="600"> 
+    </svg>
+  </body>
+</html>
+
+<script>
+  var data = [
+    {x:100, y:100, c:'red'},
+    {x:200, y:200, c:'green'},
+    {x:600, y:600, c:'blue'},
+  ]
+  
+  var svg = d3.select('#svg')
+  
+  for(let i=0; i<3; i++){
+    svg.append('circle')
+      .attr('cx', data[i].x)
+      .attr('cy', data[i].y)
+      .attr('r', 15)
+      .attr('fill', data[i].c)
+  }
+
+</script>

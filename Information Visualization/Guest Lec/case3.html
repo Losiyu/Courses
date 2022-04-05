@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v6.js"></script>
+  </head>
+
+  <body>
+
+    <svg id="svg" height="600" width="600">
+    </svg>
+
+  </body>
+</html>
+
+<script>
+  var svg = d3.select('#svg')
+  
+  svg.append("circle")
+    .attr('cx', 100)
+    .attr('cy', 100)
+    .attr('r', 15)
+    .attr('fill', 'red')
+</script>

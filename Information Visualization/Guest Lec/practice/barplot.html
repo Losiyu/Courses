@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script src="https://d3js.org/d3.v6.js"></script>
+  </head>
+  <body>
+    <svg id="svg">
+    </svg>
+  </body>
+</html>
+
+<script>
+  var width = 400
+  var height = 400
+  var margin = {left: 30, bottom: 30, right: 30, top: 30}
+  var svg = d3.select('#svg')
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append('g')
+      .attr("transform", "translate(" + margin.left + ","+ margin.top + ")")
+  var data = [
+    { name: "a", value: 10 },
+    { name: "b", value: 20 },
+    { name: "c", value: 30 },
+  ]
+  /**
+   * YOU CODE HERE
+   * -------------------------
+   * Note:
+   * For Scale:
+   *    1. Apart from scaleLinear, we will use 'scaleBand' for xAxis
+   *    2. You can get bar width by using xScale.bandwidth()
+   * For Bar component:
+   *    1. Rather than circle, we will use 'rect'
+   */
+</script>
+
+
+
+
+
+
+
+
+<script>
+  var xScale = d3.scaleBand()
+    .domain(['a', 'b', 'c'])
+    .range([0, width])
+  var yScale = d3.scaleLinear()
+    .domain([0, 35])
+    .range([height, 0])
+
+  svg.selectAll("rect")
+    .data(data)
+    .join("rect")
+      .attr("class", function (d) { return "rect_"+d.name })
+      .attr("x", function (d) { return xScale(d.name) })
+      .attr("y", function (d) { return yScale(d.value) })
+      .attr("width", xScale.bandwidth())
+      .attr("height", function (d) { return height - yScale(d.value) })
+      .attr("fill", "green")
+      .on("mouseover", highlight)
+      .on("mouseleave", doNotHighlight)
+    
+  xAxis = d3.axisBottom(xScale)
+  yAxis = d3.axisLeft(yScale)
+  svg.append('g')
+    .attr('transform', "translate(0, "+height+")")
+    .call(xAxis)
+  svg.append('g')
+    .attr('transform', "translate(0, 0)")
+    .call(yAxis)
+
+  function highlight(event, data){
+    console.log(event, data)
+    d3.selectAll('.rect_'+data.name)
+      .transition()
+      .attr('fill', 'yellow')
+  }
+
+  function doNotHighlight(event, data){
+    d3.selectAll("rect")
+      .transition()
+      .attr('fill', 'green')
+  }
+</script>

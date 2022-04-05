@@ -1,0 +1,53 @@
+  <html>
+  <head>
+    <script src="https://d3js.org/d3.v6.js"></script>
+  </head>
+  <body>
+    <svg id="svg">
+    </svg>
+  </body>
+</html>
+
+<script>
+  var width = 600
+  var height = 600
+  var margin = {left: 30, bottom: 30, right: 30, top: 30}
+
+  var svg = d3.select('#svg')
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+    .append('g')
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+  var data = [
+    {x: 1, y: 1, c:'red'},
+    {x: 2, y: 2, c:'green'},
+    {x: 3, y: 4, c:'blue'},
+  ]
+
+  var xScale = d3.scaleLinear()
+            .domain([0, 4])
+            .range([0, width])
+  var yScale = d3.scaleLinear()
+            .domain([0, 5])
+            .range([height, 0])
+
+  svg.append('g')
+    .selectAll('circle')
+    .data(data)
+    .join('circle')
+      .attr('cx', d=>xScale(d.x))
+      .attr('cy', d=>yScale(d.y))
+      .attr('r', 15)
+      .attr('fill', d=>d.c)
+  
+  xAxis = d3.axisBottom(xScale)
+  yAxis = d3.axisLeft(yScale)
+
+  svg.append('g')
+    .attr('transform', "translate(0, "+height+")")
+    .call(xAxis)
+  svg.append('g')
+    .attr('transform', "translate(0, 0)")
+    .call(yAxis)
+</script>
