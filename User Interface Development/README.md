@@ -1,4 +1,4 @@
-## # User Interface Development
+## User Interface Development
 
 CSE 333, SBU, FA20
 
