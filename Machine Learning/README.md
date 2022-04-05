@@ -1,3 +1,3 @@
 # Machine Learning
 
-CS 527, SBU, FA20
+CSE 527, SBU, FA20
