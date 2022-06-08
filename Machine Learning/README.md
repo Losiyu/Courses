@@ -1,3 +1,5 @@
 # Machine Learning
 
-CSE 527, SBU, FA20
+DS-GA 1003, NYU, SP22
+
+https://nyu-ds1003.github.io/spring2022/#home

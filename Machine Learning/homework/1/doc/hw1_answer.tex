@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+
+\title{hw1_answer}
+\author{sl9404 }
+\date{February 2022}
+
+\begin{document}
+
+\section{}
+$f^*=a_0+a_1x+a_2x^2$\\
+$R(f^*)=\mathbb{E}[(a_0+a_1x+a_2x^2-(a_0+a_1x+a_2x^2))^2]=0$
+
+\section{}
+$R(f^*_{\mathcal{H}_2}) \leq R(f^*_{\mathcal{H}_d})$\\
+$f^*_{\mathcal{H}_d}=a_0+a_1x+a_2x^2$\\
+Approximate Error: $R(f^*_{\mathcal{H}_d})-R(f^*)=0$
+
+\section{}
+$R(f^*_{\mathcal{H}_2}) \leq R(f^*_{\mathcal{H}_d})$\\
+$f^*_{\mathcal{H}_d}=a_0+a_1x+a_2x^2$\\
+Approximate Error: $R(f^*_{\mathcal{H}_d})-R(f^*)=0$
+
+\section{}
+$g(x) = a_1 x + a_2 x^2$\\
+$f(x) = b_1 x$\\
+$
+R(f_\mathcal{H}) 
+=\mathbb{E}[(a_1x+a_2x^2-b_1x)^2]\\
+=\mathbb{E}[a_1^2x^2+a_2^2x^4+b_1^2x^2+2a_1a_2x^3-2a_1b_1x^2-2a_2b_1x^3]\\
+=\mathbb{E}[a_2^2x^4+a_2(2a_1-2b_1)x^3+(b_1^2-2a_1b_1+a_1^2)x^2]\\
+=a_2^2\mathbb{E}[x^4]+a_2(2a_1-2b_1)\mathbb{E}[x^3]+((b_1-a_1)^2)\mathbb{E}[x^2]\\
+=\frac{1}{3}(b_1-a_1)^2+\frac{1}{4}a_2(2a_1-2b_1)+\frac{1}{5}a_2^2\\
+=(10b_1^2+((-15a_2)-20a_1)b_1+6a_2^2+15a_1a_2+10a_1^2)/30
+$\\
+when $b_1=\frac{3a_2+4a_1}{4}$ has minimize error, which is $\frac{a^2_2}{80}$\\
+when $a_2=0$, when $b_1=a_1$, approximate error=0
+\end{document}
